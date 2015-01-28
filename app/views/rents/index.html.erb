@@ -1,0 +1,33 @@
+<h1>Listing rents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date from</th>
+      <th>Date to</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rents.each do |rent| %>
+      <tr>
+        <td><%= rent.title %></td>
+        <td><%= rent.date_from %></td>
+        <td><%= rent.date_to %></td>
+        <td><%= rent.description %></td>
+        <td><%= link_to 'Show', rent %></td>
+        <td><%= link_to 'Edit', edit_rent_path(rent) %></td>
+        <td><%= link_to 'Destroy', rent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rent', new_rent_path %>
