@@ -48,7 +48,7 @@ class RentsController < ApplicationController
     end
 
     def authorization
-      unless current_user == @rent.user
+      unless rent_authorized?(current_user, @rent)
         redirect_to :back, notice: "你没有权限"
       end
     end
