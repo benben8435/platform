@@ -1,6 +1,7 @@
 class RentsController < ApplicationController
   before_action :set_rent, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :authorization, only: [:edit, :update, :destroy]
   respond_to :html
 
   def index
@@ -21,7 +22,7 @@ class RentsController < ApplicationController
   end
 
   def create
-    @rent = Rent.new(rent_params)
+    @rent = current_user.build_rent(rent_params)
     @rent.save
     respond_with(@rent)
   end
@@ -42,6 +43,14 @@ class RentsController < ApplicationController
     end
 
     def rent_params
-      params.require(:rent).permit(:title, :date_from, :date_to, :description)
+      params.require(:rent).permit(:title, :date_from, :date_to, :description, :telephone,
+                                  :wechat, :district)
     end
+
+    def authorization
+      unless current_user == @rent.user
+        redirect_to :back, notice: "你没有权限"
+      end
+    end
+
 end

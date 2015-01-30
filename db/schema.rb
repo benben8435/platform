@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128000951) do
+ActiveRecord::Schema.define(version: 20150129222230) do
 
   create_table "rents", force: true do |t|
     t.string   "title"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 20150128000951) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "users_id"
+    t.integer  "user_id"
+    t.string   "telephone"
+    t.string   "wechat"
+    t.string   "district"
   end
 
   create_table "users", force: true do |t|
@@ -35,6 +40,8 @@ ActiveRecord::Schema.define(version: 20150128000951) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "authority"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

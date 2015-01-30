@@ -1,24 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>标题:</strong>
   <%= @rent.title %>
 </p>
 
 <p>
-  <strong>Date from:</strong>
+  <strong>起租日期:</strong>
   <%= @rent.date_from %>
 </p>
 
 <p>
-  <strong>Date to:</strong>
+  <strong>结租日期:</strong>
   <%= @rent.date_to %>
 </p>
-
 <p>
-  <strong>Description:</strong>
+  <strong>招租人:</strong>
+  <%= @rent.user.name %>
+</p>
+<p>
+  <strong>小区名:</strong>
+  <%= @rent.district %>
+</p>
+<p>
+  <strong>简介:</strong>
   <%= @rent.description %>
 </p>
+<p>
+  <strong>联系电话：</strong>
+  <%= @rent.telephone %><br>
+  <strong>微信号：</strong>
+  <%= @rent.wechat %><br>
+  <strong>电子邮箱：</strong>
+  <%= @rent.user.email %>
+</p>
 
-<%= link_to 'Edit', edit_rent_path(@rent) %> |
-<%= link_to 'Back', rents_path %>
+<%= link_to '编辑', edit_rent_path(@rent) %> |
+<%= link_to '返回', rents_path %>

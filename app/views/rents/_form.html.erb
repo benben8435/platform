@@ -12,22 +12,34 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label '标题' %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :date_from %><br>
+    <%= f.label '起租日期' %><br>
     <%= f.date_select :date_from %>
   </div>
   <div class="field">
-    <%= f.label :date_to %><br>
+    <%= f.label '结租日期' %><br>
     <%= f.date_select :date_to %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label '联系电话' %><br>
+    <%= f.telephone_field :telephone %>
+  </div>
+  <div class="field">
+    <%= f.label '微信号' %><br>
+    <%= f.text_field :wechat %>
+  </div>
+  <div class="field">
+    <%= f.label '小区名' %><br>
+    <%= f.text_field :district %>
+  </div>
+  <div class="field">
+    <%= f.label '简介' %><br>
     <%= f.text_area :description %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit '提交' %>
   </div>
 <% end %>
