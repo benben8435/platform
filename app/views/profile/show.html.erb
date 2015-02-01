@@ -1,0 +1,21 @@
+<p>电子邮箱：
+<%= current_user.email %></p>
+<p>名字：
+  <%= current_user.name %></p>
+<p>查看我发布的招租信息：<br>
+<% if current_user.rent != nil %>
+<table>
+<tr>
+  <td><%= current_user.rent.title %></td>
+  <td><%= current_user.rent.date_from %></td>
+  <td><%= current_user.rent.district %></td>
+  <td><%= link_to '查看详情', current_user.rent %></td>
+  <td><%= link_to '删除', rent_path(id: current_user.rent, from_profile: :true), method: :delete, data: { confirm: '确定删除嘛？' } %></td>
+</tr>
+</table>
+<% else %>
+暂时没有我发布的招租消息，
+<%= link_to '发布招租信息', new_rent_path %>
+<% end %>
+</p>
+<p><%= link_to '修改我的信息', edit_user_registration_path %></p>
