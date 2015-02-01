@@ -34,7 +34,11 @@ class RentsController < ApplicationController
 
   def destroy
     @rent.destroy
-    respond_with(@rent)
+    if params[:from_profile] == 'true'
+      redirect_to :back
+    else
+      respond_with(@rent)
+    end
   end
 
   private

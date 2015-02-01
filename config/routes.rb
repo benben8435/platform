@@ -1,5 +1,9 @@
 Platform::Application.routes.draw do
   get "welcome/index"
+  put "profile/upgrade"
+  get "profile/show"
+  get "profile/index"
+  delete "profile/destroy"
   resources :rents
 
   devise_for :users, controllers: { registrations: "users/registrations" }
@@ -9,6 +13,7 @@ Platform::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get 'rents' => 'rents#index', as: :user_root
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
