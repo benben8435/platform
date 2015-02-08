@@ -1,21 +1,39 @@
+<p id="notice"><%= notice %></p>
 <p>电子邮箱：
-<%= current_user.email %></p>
+<%= @this_user.email %></p>
 <p>名字：
-  <%= current_user.name %></p>
-<p>查看我发布的招租信息：<br>
-<% if current_user.rent != nil %>
-<table>
-<tr>
-  <td><%= current_user.rent.title %></td>
-  <td><%= current_user.rent.date_from %></td>
-  <td><%= current_user.rent.district %></td>
-  <td><%= link_to '查看详情', current_user.rent %></td>
-  <td><%= link_to '删除', rent_path(id: current_user.rent, from_profile: :true), method: :delete, data: { confirm: '确定删除嘛？' } %></td>
-</tr>
-</table>
+  <%= @this_user.name %></p>
+<p>发布的招租信息：<br>
+<% if @this_user.rent.count != 0 %>
+  <table>
+    <tr>
+      <th>标题</th>
+      <th>起租日期</th>
+      <th>小区名</th>
+    </tr>
+    <% @this_user.rent.each do |rent| %>
+    <tr>
+      <td><%= rent.title %></td>
+      <td><%= rent.date_from %></td>
+      <td><%= rent.district %></td>
+      <td><%= link_to '查看详情', rent %></td>
+      <% if current_user == @this_user %>
+      <td><%= link_to '删除', rent_path(id: rent, from_profile: :true), method: :delete, data: { confirm: '确定删除嘛？' } %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
 <% else %>
+<% if current_user == @this_user %>
 暂时没有我发布的招租消息，
 <%= link_to '发布招租信息', new_rent_path %>
+<% else %>
+暂时没有TA发布的招租消息，
+<% end %>
 <% end %>
 </p>
+<% if current_user == @this_user %>
 <p><%= link_to '修改我的信息', edit_user_registration_path %></p>
+<% end %>
+<%= link_to '返回', rents_path %>
+

@@ -22,7 +22,7 @@ class RentsController < ApplicationController
   end
 
   def create
-    @rent = current_user.build_rent(rent_params)
+    @rent = current_user.rent.build(rent_params)
     @rent.save
     respond_with(@rent)
   end

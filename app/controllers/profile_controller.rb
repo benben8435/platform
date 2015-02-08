@@ -1,12 +1,14 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorization
-  before_action :super_authorization, only: :destroy
+  before_action :authorization, except: :show
+  before_action :super_authorization, only: :upgrade
   def index
     @user_list = User.all
   end
 
   def show
+    @this_user = User.find(params[:id])
+
   end
 
   def upgrade
@@ -30,6 +32,9 @@ class ProfileController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
+    unless current_user.authority > user.authority
+      redirect_to action: :index, notice: "你没有权限"
+    end
     user.destroy
     redirect_to action: :index
   end

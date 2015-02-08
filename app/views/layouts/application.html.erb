@@ -10,7 +10,17 @@
   <% if current_user != nil %>
     <%= render "shared/profile" %>
   <% end %>
-<%= yield %>
-
+  <div style="margin-bottom: 15%">
+		<%= yield %>
+	</div>
+  <footer>
+    <div class="container">
+      <p class="text-center text-muted">
+        &copy; Copyright UCSD CSSA
+        <br />
+        CSSA 网站组出品
+      </p>
+    </div>
+  </footer>
 </body>
 </html>

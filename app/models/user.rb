@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :rent, dependent: :destroy
+  has_many :rent, dependent: :destroy
   before_save :set_authority
 
   def set_authority

@@ -6,4 +6,8 @@ module ApplicationHelper
       false
     end
   end
+  def min_password
+    @minimum_password_length.to_s + " characters minimum"
+  end
+
 end
