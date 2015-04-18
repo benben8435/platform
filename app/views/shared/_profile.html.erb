@@ -1,5 +1,42 @@
-<%= link_to current_user.name, profile_show_path(id: current_user) %>
-<% if current_user.authority > 0 %>
-  <%= link_to '用户管理', profile_index_path %>
-<% end %>
-<%= link_to('登出', destroy_user_session_path, :method => :delete) %>        
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://www.ucsdcssa.org"><b><p class="text-primary">UCSD CSSA</p></b></a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><%= link_to rents_path do %><b><p class="text-primary">短租平台</p></b><% end %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">更多平台<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">拼车</a></li>
+              <li><a href="#">同飞</a></li>
+            </ul>
+          </li>
+        </ul>
+      <% if current_user != nil %>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+              <i class="fa fa-user"></i> <%= current_user.name %> <span class="caret"></span><i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><i class="fa fa-user"></i> <%= link_to "个人信息", profile_show_path(id: current_user) %></li>
+              <% if current_user.authority > 0 %>
+                <li><i class="fa fa-user"></i><%= link_to '用户管理', profile_index_path %></li>
+              <% end %>
+              <li><i class="fa fa-lock"></i><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
+            </ul>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+</nav>
+        

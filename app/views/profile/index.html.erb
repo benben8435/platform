@@ -1,12 +1,14 @@
-<p id="notice"><%= notice %></p>
-<h1>用户管理</h1>
-<table>
+<div style="margin-left: 10%; margin-right: 10%">
+<div class="page-header">
+  <center><h1>用户管理</h1></center>
+</div>
+<table class="table table-striped text-center">
   <thead>
     <tr>
-      <th>电子邮箱</th>
-      <th>名字</th>
-      <th>用户权限</th>
-      <th>最近登录时间</th>
+      <th class="text-center">电子邮箱</th>
+      <th class="text-center">名字</th>
+      <th class="text-center">用户权限</th>
+      <th class="text-center">最近登录时间</th>
       <% if change_authority? %>
       <th></th>
       <% end %>
@@ -14,7 +16,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="top30">
     <% @user_list.each do |user| %>
       <tr>
         <td><%= user.email %></td>
@@ -24,16 +26,16 @@
         <td><% if change_authority? %>
           <% if user.authority == 0 %>
           <%= button_to 'Upgrade to Admin', {action: :upgrade, user: user, 
-              upgrade: :true}, method: :put %>
+              upgrade: :true}, method: :put, class: "btn btn-default" %>
           <% end %>
           <% if user.authority == 1 %>
           <%= button_to 'Downgrade to User', {action: :upgrade, user: user, 
-              upgrade: :false}, method: :put %>
+              upgrade: :false}, method: :put, class: "btn btn-default" %>
           <% end %>
         <% end %>
         </td>
         <td><%= button_to '删除用户', profile_destroy_path(id: user), method: :delete, 
-        :disabled => delete_authorized(user), data: { confirm: '确定删除嘛？' } %></td>
+        :disabled => delete_authorized(user), data: { confirm: '确定删除嘛？' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
