@@ -1,12 +1,13 @@
+# encoding: UTF-8
 module ProfileHelper
   def show_authority(authority)
     case authority
     when 0
-      '用户'
+      return '用户'
     when 1
-      '管理员'
+      return '管理员'
     when 2
-      '超级管理员'
+      return '超级管理员'
     end
   end
 

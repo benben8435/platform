@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20150418214651) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "users_id"
     t.integer  "user_id"
     t.string   "telephone"
     t.string   "wechat"

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ProfileController < ApplicationController
   before_action :authenticate_user!
   before_action :authorization, except: :show
