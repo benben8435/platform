@@ -16,7 +16,7 @@
       <th class="text-center">价格</th>
       <th class="text-center">小区名</th>
     </tr>
-    <% @this_user.rent.each do |rent| %>
+    <% @this_user.rent.reverse_each do |rent| %>
     <tr>
       <td><%= rent.title %></td>
       <td><%= rent.price %></td>

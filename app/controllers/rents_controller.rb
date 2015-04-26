@@ -49,7 +49,7 @@ class RentsController < ApplicationController
 
     def rent_params
       params.require(:rent).permit(:title, :date_from, :date_to, :description, :telephone,
-                                  :wechat, :district)
+                                  :wechat, :district, :price)
     end
 
     def authorization

@@ -22,7 +22,7 @@
         <td><%= user.email %></td>
         <td><%= user.name %></td>
         <td><%= show_authority user.authority %></td>
-        <td><%= user.last_sign_in_at.in_time_zone("Central Time (US & Canada)") %></td>
+        <td><%= user.last_sign_in_at.in_time_zone("Mountain Time (US & Canada)") %></td>
         <td><% if change_authority? %>
           <% if user.authority == 0 %>
           <%= button_to 'Upgrade to Admin', {action: :upgrade, user: user, 

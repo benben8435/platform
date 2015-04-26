@@ -6,7 +6,7 @@
   <%= link_to '发布招租信息', new_rent_path, class: "btn btn-default" %>
 </div>
 <br />
-<table class="table table-striped text-center">
+<table class="table table-striped text-center table-hover">
   <thead > 
     <tr >
       <th class="text-center">标题</th>
@@ -14,7 +14,6 @@
       <th class="text-center">小区名</th>
       <th class="text-center">价格</th>
       <th class="text-center">招租人</th>
-      <th class="text-center"></th>
       <% if current_user.authority > 0 %>
         <th></th>
       <% end %>
@@ -22,18 +21,17 @@
   </thead>
 
   <tbody class="top30">
-    <% @rents.each do |rent| %>
-      <tr>
-        <td><%= rent.title %></td>
-        <td><%= rent.date_from %></td>
-        <td><%= rent.district %></td>
-        <td><%= rent.price %></td>
-        <td><%= rent.user.name %></td>
-        <td><%= link_to '查看详情', rent %></td>
-        <% if current_user.authority > 0 %>
-          <td><%= link_to '删除', rent, method: :delete, data: { confirm: '确定删除嘛？' } %></td>
-        <% end %>
-      </tr>
+    <% @rents.reverse_each do |rent| %>
+        <tr data-link="<%= rent_path(rent) %>">
+          <td><%= truncate rent.title, length: 20 %></td>
+          <td><%= rent.date_from %></td>
+          <td><%= truncate rent.district, length: 20 %></td>
+          <td><%= truncate(number_to_currency(rent.price), length: 8) %></td>
+          <td><%= truncate rent.user.name %></td>
+          <% if current_user.authority > 0 %>
+            <td><%= link_to '删除', rent, method: :delete, data: { confirm: '确定删除嘛？' } %></td>
+          <% end %>
+        </tr>
     <% end %>
   </tbody>
 </table>
