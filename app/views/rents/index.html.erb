@@ -26,7 +26,11 @@
           <td><%= truncate rent.title, length: 20 %></td>
           <td><%= rent.date_from %></td>
           <td><%= truncate rent.district, length: 20 %></td>
-          <td><%= truncate(number_to_currency(rent.price), length: 8) %></td>
+          <% if rent.price == nil %>
+            <td>未定</td>
+          <% else %>
+            <td><%= truncate(number_to_currency(rent.price), length: 10) %></td>
+          <% end %>
           <td><%= truncate rent.user.name %></td>
           <% if current_user.authority > 0 %>
             <td><%= link_to '删除', rent, method: :delete, data: { confirm: '确定删除嘛？' } %></td>

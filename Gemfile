@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'mailcatcher'
 gem 'validates_timeliness'
+gem 'jquery-turbolinks'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
